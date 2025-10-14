@@ -26,7 +26,7 @@ class CourseForm
                     ->disk('public')
                     ->directory('courses')
                     ->visibility('public')
-                    ->maxSize(512),
+                    ->maxSize(1024),
             ]);
     }
 }

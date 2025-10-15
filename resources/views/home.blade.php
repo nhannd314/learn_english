@@ -10,7 +10,7 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="course-item mb-4">
                         <div class="mb-2">
-                            <a href="{{ route('course', $course->id) }}">
+                            <a href="{{ route('course', $course) }}">
                                 <img src="{{ asset('storage/' . $course->thumbnail) }}"  alt="{{ $course->title }}"/>
                             </a>
                         </div>

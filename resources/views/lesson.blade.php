@@ -18,7 +18,7 @@
         </div>
         <div class="vocabulary mb-5">
             <h2 class="mb-4">Vocabulary</h2>
-            <table class="table table-striped">
+            <table class="table table-striped align-middle">
 
                 @forelse($lesson->words as $word)
                     <tr>
@@ -42,7 +42,7 @@
         </div>
         <div class="content">
             <h2 class="mb-4">Lesson content</h2>
-            {!! $lesson->content !!}
+            {!! \App\Helpers\ShortcodeHelper::parse($lesson->content) !!}
         </div>
     </div>
 @endsection

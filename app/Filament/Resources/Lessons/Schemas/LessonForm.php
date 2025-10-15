@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Lessons\Schemas;
 
+use App\Models\Unit;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -16,6 +17,13 @@ class LessonForm
             ->components([
                 Select::make('unit_id')
                     ->label('Unit')
+//                    ->relationship(name: 'unit', titleAttribute: 'title')
+//                    ->getOptionLabelUsing(function(?string $value, Unit $unit) {
+//                        if ($unit->course) {
+//                            return "{$unit->course->title} > {$unit->title}";
+//                        }
+//                        return $unit->title;
+//                    })
                     ->options(
                         \App\Models\Course::with('units')->get()->mapWithKeys(function ($course) {
                             return [

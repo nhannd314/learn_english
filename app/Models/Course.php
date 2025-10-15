@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\SlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,18 +14,27 @@ class Course extends Model
 
     protected $fillable = ['title','slug', 'description','thumbnail'];
 
+    /**
+     * Get the route key for the model.
+     */
+//    public function getRouteKeyName(): string
+//    {
+//        return 'slug';
+//    }
+
     protected static function boot()
     {
         parent::boot();
 
+        // tao slug khi create model
         static::creating(function ($course) {
-            $course->slug = static::generateUniqueSlug($course->title);
+            $course->slug = SlugHelper::generateUniqueSlug(self::class, $course->title);
         });
 
+        // Nếu title thay đổi thì cập nhật lại slug
         static::updating(function ($course) {
-            // Nếu title thay đổi thì cập nhật lại slug
             if ($course->isDirty('title')) {
-                $course->slug = static::generateUniqueSlug($course->title);
+                $course->slug = SlugHelper::generateUniqueSlug(self::class, $course->title);
             }
         });
     }
@@ -32,19 +42,5 @@ class Course extends Model
     public function units(): HasMany
     {
         return $this->hasMany(Unit::class)->orderBy('unit_number');
-    }
-
-    protected static function generateUniqueSlug($title): string
-    {
-        $baseSlug = Str::slug($title);
-        $slug = $baseSlug;
-        $counter = 1;
-
-        while (static::where('slug', $slug)->exists()) {
-            $slug = $baseSlug . '-' . $counter;
-            $counter++;
-        }
-
-        return $slug;
     }
 }

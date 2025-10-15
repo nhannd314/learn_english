@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function show($id)
+    public function show(Course $course)
     {
-        $course = Course::with('units')->findOrFail($id);
+        $course->load('units');
         return view('course', compact('course'));
     }
 }

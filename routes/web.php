@@ -4,11 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/course/{id}', [\App\Http\Controllers\CourseController::class, 'show'])->name('course');
+Route::get('/course/{course:slug}', [\App\Http\Controllers\CourseController::class, 'show'])->name('course');
 Route::get('/unit/{id}', [\App\Http\Controllers\UnitController::class, 'show'])->name('unit');
 Route::get('/lesson/{id}', [\App\Http\Controllers\LessonController::class, 'show'])->name('lesson');
-
-Route::get('/contact', [[\App\Http\Controllers\CourseController::class, 'show']])->name('contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -20,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/test', [\App\Http\Controllers\TestController::class, 'index'])->name('test.index');
+//Route::get('/test', [\App\Http\Controllers\TestController::class, 'index'])->name('test.index');
 
 require __DIR__.'/auth.php';
+
+Route::get('/{page:slug}', [\App\Http\Controllers\PageController::class, 'show']);

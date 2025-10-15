@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h1 class="mb-4">{{ $course->title }}</h1>
-        <div class="description">
+        <div class="description mb-4">
             {{ $course->description }}
         </div>
         <div class="unit-list row">

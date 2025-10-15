@@ -11,7 +11,7 @@
             </ol>
         </nav>
         <h1 class="mb-4">{{ $unit->title }}</h1>
-        <div class="description">
+        <div class="description mb-4">
             {{ $unit->description }}
         </div>
         <div class="lesson-list row">

@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'api' => [
+        'gtts' => env('GTTS_API_URL'),
+    ]
+
 ];

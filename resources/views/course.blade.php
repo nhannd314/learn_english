@@ -11,7 +11,7 @@
         <div class="unit-list row">
             @forelse($course->units as $unit)
                 <div class="col-md-3 col-sm-12">
-                    <div class="unit text-center bg-secondary p-4 rounded-2">
+                    <div class="unit text-center bg-success p-4 rounded-2 mb-4">
                         <a class="text-white" href="{{ route('unit', $unit->id) }}">
                             <h3>{{ $unit->title }}</h3>
                         </a>

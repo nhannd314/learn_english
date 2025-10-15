@@ -8,7 +8,7 @@
         <div class="row">
             @forelse($courses as $course)
                 <div class="col-md-4 col-sm-12">
-                    <div class="course-item border-1">
+                    <div class="course-item mb-4">
                         <div class="mb-2">
                             <a href="{{ route('course', $course->id) }}">
                                 <img src="{{ asset('storage/' . $course->thumbnail) }}"  alt="{{ $course->title }}"/>

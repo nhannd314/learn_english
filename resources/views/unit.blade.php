@@ -16,8 +16,8 @@
         </div>
         <div class="lesson-list row">
             @forelse($unit->lessons as $lesson)
-                <div class="col-md-3 col-sm-12">
-                    <div class="lesson text-center bg-secondary p-4 rounded-2">
+                <div class="col-md-4 col-sm-12">
+                    <div class="lesson text-center bg-success p-4 rounded-2 mb-4">
                         <a class="text-white fs-5" href="{{ route('lesson', $lesson->id) }}">
                             {{ $lesson->title }}
                         </a>

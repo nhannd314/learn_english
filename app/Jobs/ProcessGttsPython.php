@@ -35,7 +35,8 @@ class ProcessGttsPython implements ShouldQueue
 //        exec("python {$scriptPath} {$word}");
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-        ])->post(config('services.api.gtts') . '/tts', [
+            //'Accept' => 'audio/mpeg',
+        ])->post(config('services.api.gtts'), [
             'text' => $this->word->word,
             'lang' => 'en',
         ]);

@@ -15,9 +15,9 @@ class LessonsTable
     {
         return $table
             ->columns([
-                TextColumn::make('unit.title')
-                    ->searchable(),
                 TextColumn::make('title')
+                    ->searchable(),
+                TextColumn::make('unit.title')
                     ->searchable(),
                 TextColumn::make('lesson_number')
                     ->numeric()

@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Helpers\SlugHelper;
 use App\Models\Word;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,7 +21,7 @@ class ProcessGttsPython implements ShouldQueue
      */
 
     public $word;
-    public function __construct(Word $word)
+    public function __construct(string $word)
     {
         $this->word = $word;
     }
@@ -30,20 +31,16 @@ class ProcessGttsPython implements ShouldQueue
      */
     public function handle(): void
     {
-//        $scriptPath = base_path('app/Python/generate_gtts.py');
-//        $word = escapeshellarg($this->word->word);
-//        exec("python {$scriptPath} {$word}");
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             //'Accept' => 'audio/mpeg',
         ])->post(config('services.api.gtts'), [
-            'text' => $this->word->word,
+            'text' => $this->word,
             'lang' => 'en',
         ]);
 
         if ($response->failed()) return;
 
-        $filename = $this->word->word . '.mp3';
-        Storage::disk('public')->put('words/' . $filename, $response->body());
+        Storage::disk('public')->put('words/' . SlugHelper::generateWordAudioUrl($this->word), $response->body());
     }
 }

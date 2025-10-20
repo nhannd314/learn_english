@@ -32,7 +32,13 @@
                                 </div>
                             @endforeach
                         </td>
-                        <td><button class="btn btn-primary" x-data @click="new Audio('{{ asset('storage/words/' . $word['audio']) }}').play()"><i class="fa-solid fa-play"></i></button></td>
+                        <td>
+                            <button
+                                class="btn btn-primary"
+                                @click="playAudio('{{ $word['word'] }}')">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </td>
                     </tr>
                 @empty
 

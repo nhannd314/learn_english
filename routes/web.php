@@ -8,6 +8,8 @@ Route::get('/course/{course:slug}', [\App\Http\Controllers\CourseController::cla
 Route::get('/unit/{id}', [\App\Http\Controllers\UnitController::class, 'show'])->name('unit');
 Route::get('/lesson/{id}', [\App\Http\Controllers\LessonController::class, 'show'])->name('lesson');
 
+Route::get('/download-cambridge-audio', [\App\Http\Controllers\CambridgeController::class, 'download'])->name('download-cambridge-audio');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

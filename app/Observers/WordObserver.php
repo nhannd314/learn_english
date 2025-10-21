@@ -12,7 +12,7 @@ class WordObserver
      */
     public function created(Word $word): void
     {
-        ProcessGttsPython::dispatch($word);
+        ProcessGttsPython::dispatch($word->word);
     }
 
     /**

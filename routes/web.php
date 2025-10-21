@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Word;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -8,7 +10,13 @@ Route::get('/course/{course:slug}', [\App\Http\Controllers\CourseController::cla
 Route::get('/unit/{id}', [\App\Http\Controllers\UnitController::class, 'show'])->name('unit');
 Route::get('/lesson/{id}', [\App\Http\Controllers\LessonController::class, 'show'])->name('lesson');
 
+
 Route::get('/download-cambridge-audio', [\App\Http\Controllers\CambridgeController::class, 'download'])->name('download-cambridge-audio');
+
+Route::post('/api/words/{word}/regenerate', function (Word $word, Request $request) {
+    \App\Jobs\ProcessGttsPython::dispatch($word);
+    return response()->json(['message' => 'Job đã được gửi để tạo lại audio.']);
+})->name('words.regenerate');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

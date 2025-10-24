@@ -19,7 +19,7 @@ class SoundForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
+                TextInput::make('title')->unique()
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('img')

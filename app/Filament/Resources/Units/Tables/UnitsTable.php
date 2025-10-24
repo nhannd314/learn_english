@@ -18,7 +18,7 @@ class UnitsTable
                     ->searchable(),
                 TextColumn::make('title')
                     ->searchable(),
-                TextColumn::make('unit_number')
+                TextColumn::make('order')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('created_at')

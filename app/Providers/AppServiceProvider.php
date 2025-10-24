@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Sound;
 use App\Models\Word;
+use App\Observers\SoundObserver;
 use App\Observers\WordObserver;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -24,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Word::observe(WordObserver::class);
+        Sound::observe(SoundObserver::class);
     }
 }

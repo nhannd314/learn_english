@@ -6,8 +6,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('course', $lesson->unit->course->id) }}">{{ $lesson->unit->course->title }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('unit', $lesson->unit->id) }}">{{ $lesson->unit->title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('course', $lesson->unit->course) }}">{{ $lesson->unit->course->title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('unit', $lesson->unit) }}">{{ $lesson->unit->title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $lesson->title }}</li>
             </ol>
         </nav>
@@ -22,20 +22,20 @@
 
                 @forelse($lesson->words as $word)
                     <tr>
-                        <td>{{ $word['word'] }}</td>
-                        <td>{{ $word['ipa'] }}</td>
+                        <td>{{ $word->source }}</td>
+                        <td>{{ $word->ipa }}</td>
                         <td>
-                            @foreach($word['meaning'] as $mean)
+                            @foreach($word->mean as $mean)
                                 <div>
-                                    <strong class="m">{{ $mean[0] }}</strong>
-                                    <span>{{ $mean[1] }}</span>
+                                    <strong class="m">{{ $mean['pos'] }}</strong>
+                                    <span>{{ $mean['vn'] }}</span>
                                 </div>
                             @endforeach
                         </td>
                         <td>
                             <button
                                 class="btn btn-primary"
-                                @click="playAudio('{{ $word['word'] }}')">
+                                onClick="new Audio('{{ asset('storage/' . $word->file) }}').play()">
                                 <i class="fa-solid fa-play"></i>
                             </button>
                         </td>

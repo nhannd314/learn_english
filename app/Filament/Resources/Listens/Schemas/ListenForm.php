@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\Audio\Schemas;
+namespace App\Filament\Resources\Listens\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
-class AudioForm
+class ListenForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -15,13 +15,14 @@ class AudioForm
             ->components([
                 TextInput::make('title')
                     ->required(),
-                FileUpload::make('file_url')
+                FileUpload::make('file')
                     ->acceptedFileTypes([ // Chỉ định các MIME types được chấp nhận
                         'audio/mpeg', // MIME type phổ biến cho .mp3
                         'audio/wav',  // MIME type cho .wav
                         'audio/mp3',  // Một số trình duyệt/hệ thống vẫn dùng
+                        'audio/ogg',
                     ])
-                    ->directory('audios') // Thư mục lưu trữ trong disk (ví dụ: storage/app/public/audio)
+                    ->directory('listens') // Thư mục lưu trữ trong disk (ví dụ: storage/app/public/audio)
                     ->disk('public')
                     ->visibility('public') // Đặt tệp tin có thể truy cập công khai
                     ->maxSize(10240) // Kích thước tối đa cho phép (ví dụ: 10MB)

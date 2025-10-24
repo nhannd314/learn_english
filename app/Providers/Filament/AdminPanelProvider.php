@@ -10,6 +10,8 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -55,5 +57,17 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    public function boot(): void
+    {
+        // Cấu hình mặc định cho TẤT CẢ các table
+        Table::configureUsing(function (Table $table): void {
+            $table
+                ->defaultSort('id', 'desc') // Mặc định sort theo id giảm dần
+                ->paginated([25, 50, 100]) // Tùy chỉnh pagination
+                ->defaultPaginationPageOption(25) // Mặc định 25 items/page
+                ;
+        });
     }
 }

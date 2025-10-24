@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Jobs\ProcessGttsPython;
+use App\Jobs\CreateWordFile;
 use App\Models\Word;
 
 class WordObserver
@@ -12,7 +12,7 @@ class WordObserver
      */
     public function created(Word $word): void
     {
-        ProcessGttsPython::dispatch($word->word);
+        CreateWordFile::dispatch($word);
     }
 
     /**

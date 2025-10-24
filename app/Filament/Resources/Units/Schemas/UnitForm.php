@@ -18,11 +18,10 @@ class UnitForm
                     ->required(),
                 TextInput::make('title')
                     ->required(),
-                TextInput::make('unit_number')
-                    ->required()
-                    ->numeric(),
                 Textarea::make('description')
                     ->columnSpanFull(),
+                TextInput::make('order')
+                    ->numeric()->default(0),
             ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Lessons\Pages;
 
 use App\Filament\Resources\Lessons\LessonResource;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
@@ -16,6 +17,7 @@ class EditLesson extends EditRecord
         return [
             ViewAction::make(),
             DeleteAction::make(),
+            CreateAction::make(),
         ];
     }
 }

@@ -12,7 +12,7 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','slug', 'description','thumbnail'];
+    protected $fillable = ['title','slug', 'description','thumbnail', 'order'];
 
     /**
      * Get the route key for the model.
@@ -41,6 +41,6 @@ class Course extends Model
 
     public function units(): HasMany
     {
-        return $this->hasMany(Unit::class)->orderBy('unit_number');
+        return $this->hasMany(Unit::class)->orderBy('order');
     }
 }

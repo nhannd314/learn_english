@@ -27,6 +27,8 @@ class CourseForm
                     ->directory('courses')
                     ->visibility('public')
                     ->maxSize(1024),
+                TextInput::make('order')
+                    ->numeric()->default(0),
             ]);
     }
 }

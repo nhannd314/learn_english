@@ -2,30 +2,34 @@
 
 namespace App\Models;
 
-use App\Helpers\SlugHelper;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Word extends Model
 {
-    protected $fillable = ['word', 'ipa', 'vn'];
+    protected $fillable = ['source', 'ipa', 'mean'];
 
     protected $casts = [
-        'vn' => 'array',
+        'mean' => 'array',
     ];
 
-    public function lesson()
+    public function lessons(): BelongsToMany
     {
-        return $this->belongsToMany(Lesson::class, 'lesson_word');
+        return $this->belongsToMany(Lesson::class);
     }
 
-    public function getAudioUrlAttribute()
+    public function getFileAttribute()
     {
-        return SlugHelper::generateWordAudioUrl($this->word);
+        return 'words/' . Str::slug($this->source) . '.mp3';
     }
 
-    public function getMeaningAttribute()
+    public static function createOrFail(array $data): self
     {
-        // tách nghĩa
-        return(array_map(fn($item) => explode(':', $item), explode(';', $this->vn)));
+        if (self::where('source', $data['source'])->exists()) {
+            throw new \Exception("The word '{$data['source']}' already exists.");
+        }
+
+        return self::create($data);
     }
 }

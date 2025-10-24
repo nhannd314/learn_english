@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Unit extends Model
 {
-    protected $fillable = ['course_id', 'title', 'unit_number', 'description'];
+    protected $fillable = ['course_id', 'title', 'order', 'description'];
 
     /**
      * @return HasMany
      */
     public function lessons(): HasMany
     {
-        return $this->hasMany(Lesson::class)->orderBy('lesson_number');
+        return $this->hasMany(Lesson::class)->orderBy('order');
     }
 
     public function course(): BelongsTo

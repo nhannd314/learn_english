@@ -1,32 +1,28 @@
 <?php
 
-namespace App\Filament\Resources\Audio\Tables;
+namespace App\Filament\Resources\Sounds\Tables;
 
-use App\Models\Audio;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class AudioTable
+class SoundsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
+                TextColumn::make('id'),
                 TextColumn::make('title')
                     ->searchable(),
-                TextColumn::make('file_url')
+                ImageColumn::make('img')
+                    ->disk('public')
+                    ->width(50),
+                TextColumn::make('file')
                     ->searchable(),
-                TextColumn::make('shortcode')
-                    ->label('Shortcode')
-                    ->getStateUsing(fn (Audio $record) => "[audio id={$record->id}]")
-                    ->searchable(false)
-                    ->sortable(false)
-                    ->copyable() // cho phép copy nhanh
-                    ->copyMessage('Copied')
-                    ->copyMessageDuration(1500),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -36,6 +32,7 @@ class AudioTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            //->defaultSort('id', 'desc')
             ->filters([
                 //
             ])

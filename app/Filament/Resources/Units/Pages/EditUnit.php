@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Units\Pages;
 
 use App\Filament\Resources\Units\UnitResource;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
@@ -14,6 +15,7 @@ class EditUnit extends EditRecord
     {
         return [
             DeleteAction::make(),
+            CreateAction::make(),
         ];
     }
 }

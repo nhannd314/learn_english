@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
-use Illuminate\Http\Request;
 
 class UnitController extends Controller
 {
-    public function show($id)
+    public function show(Unit $unit)
     {
-        $unit = Unit::with('lessons')->findOrFail($id);
+        $unit->load('lessons');
         return view('unit', compact('unit'));
     }
 }

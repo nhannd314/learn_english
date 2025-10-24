@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Audio\Pages;
+namespace App\Filament\Resources\Words\Pages;
 
-use App\Filament\Resources\Audio\AudioResource;
+use App\Filament\Resources\Words\WordResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
-class ListAudio extends ListRecords
+class ListWords extends ListRecords
 {
-    protected static string $resource = AudioResource::class;
+    protected static string $resource = WordResource::class;
 
     protected function getHeaderActions(): array
     {

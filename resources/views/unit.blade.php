@@ -6,7 +6,7 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('course', $unit->course->id) }}">{{ $unit->course->title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('course', $unit->course) }}">{{ $unit->course->title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $unit->title }}</li>
             </ol>
         </nav>
@@ -18,7 +18,7 @@
             @forelse($unit->lessons as $lesson)
                 <div class="col-md-4 col-sm-12">
                     <div class="lesson text-center bg-success p-4 rounded-2 mb-4">
-                        <a class="text-white fs-5" href="{{ route('lesson', $lesson->id) }}">
+                        <a class="text-white fs-5" href="{{ route('lesson', $lesson) }}">
                             {{ $lesson->title }}
                         </a>
                     </div>

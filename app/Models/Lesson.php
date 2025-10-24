@@ -8,24 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Lesson extends Model
 {
-    protected $fillable = ['unit_id', 'title', 'lesson_number', 'vocabulary', 'content'];
-
-    protected static function booted()
-    {
-        static::saved(function ($lesson) {
-            // save words
-//            if (empty($lesson->words)) {
-//                return;
-//            }
-//            foreach ($lesson->words as $word) {
-//                // Tìm hoặc tạo từ mới
-//                Word::firstOrCreate(
-//                    ['word' => $word['word']],
-//                    $word
-//                );
-//            }
-        });
-    }
+    protected $fillable = ['unit_id', 'title', 'order', 'content'];
 
     /**
      * @return BelongsTo
@@ -35,8 +18,10 @@ class Lesson extends Model
         return $this->belongsTo(Unit::class);
     }
 
-    public function words()
+    public function words(): BelongsToMany
     {
-        return $this->belongsToMany(Word::class, 'lesson_word');
+        return $this->belongsToMany(Word::class)
+            ->withPivot('order')
+            ->orderBy('lesson_word.order');
     }
 }

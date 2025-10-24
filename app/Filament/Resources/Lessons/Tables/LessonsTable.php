@@ -19,7 +19,7 @@ class LessonsTable
                     ->searchable(),
                 TextColumn::make('unit.title')
                     ->searchable(),
-                TextColumn::make('lesson_number')
+                TextColumn::make('order')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('created_at')

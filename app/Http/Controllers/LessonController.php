@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    public function show($id)
+    public function show(Lesson $lesson)
     {
-        $lesson = Lesson::findOrFail($id);
+        $lesson->load('words');
         return view('lesson', compact('lesson'));
     }
 }

@@ -20,7 +20,11 @@ class CoursesTable
                 TextColumn::make('slug')
                     ->searchable(),
                 ImageColumn::make('thumbnail')
-                    ,
+                    ->disk('public')
+                    ->width(50),
+                TextColumn::make('order')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

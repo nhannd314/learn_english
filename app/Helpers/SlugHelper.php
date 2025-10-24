@@ -24,9 +24,4 @@ class SlugHelper
 
         return $slug;
     }
-
-    public static function generateWordAudioUrl(string $word): string
-    {
-        return Str::slug($word) . '.mp3';
-    }
 }

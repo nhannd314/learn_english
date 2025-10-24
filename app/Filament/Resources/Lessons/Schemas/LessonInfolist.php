@@ -14,11 +14,8 @@ class LessonInfolist
                 TextEntry::make('unit.title')
                     ->label('Unit'),
                 TextEntry::make('title'),
-                TextEntry::make('lesson_number')
+                TextEntry::make('order')
                     ->numeric(),
-                TextEntry::make('vocabulary')
-                    ->placeholder('-')
-                    ->columnSpanFull(),
                 TextEntry::make('content')
                     ->placeholder('-')
                     ->columnSpanFull(),

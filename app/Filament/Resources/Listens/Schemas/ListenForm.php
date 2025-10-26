@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Listens\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -28,8 +29,11 @@ class ListenForm
                     ->maxSize(10240) // Kích thước tối đa cho phép (ví dụ: 10MB)
                     ->maxFiles(1) // Cho phép tải lên 1 tệp duy nhất
                     ->required(),
-                Textarea::make('transcript')
-                    ->rows(10)
+                RichEditor::make('transcript')
+                    ->extraAttributes(['style' => 'min-height: 400px;'])
+                    ->fileAttachmentsDisk('public') // nơi lưu file
+                    ->fileAttachmentsDirectory('listens') // thư mục con
+                    ->fileAttachmentsVisibility('public') // để truy cập được ảnh qua URL
                     ->columnSpanFull(),
             ]);
     }

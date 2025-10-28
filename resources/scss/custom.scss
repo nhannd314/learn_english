@@ -8,4 +8,14 @@ body.lesson {
             margin-right: 10px;
         }
     }
+    .sound-item {
+        img {
+            transition: transform 0.4s;
+        }
+        &:hover {
+            img {
+                transform: scale(1.05);
+            }
+        }
+    }
 }

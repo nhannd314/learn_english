@@ -20,7 +20,7 @@
         @if ($lesson->words)
             <div class="vocabulary mb-5">
                 <h2 class="mb-4">Vocabulary</h2>
-                <table class="table table-striped align-middle">
+                <table class="table table-striped align-middle fs-5">
 
                     @foreach($lesson->words as $word)
                         <tr>

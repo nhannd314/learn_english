@@ -7,7 +7,7 @@
         <h2 class="mb-4">Courses List</h2>
         <div class="row">
             @forelse($courses as $course)
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-3 col-sm-12">
                     <div class="course-item mb-4">
                         <div class="mb-2">
                             <a href="{{ route('course', $course) }}">
@@ -16,10 +16,10 @@
                         </div>
                         <div class="">
                             <a href="{{ route('course', $course) }}">
-                                <h3 class="title">{{ $course->title }}</h3>
+                                <h3 class="title fs-4">{{ $course->title }}</h3>
                             </a>
                             <p class="description">{{ $course->description }}</p>
-                            <a href="{{ route('course', $course) }}" class="btn btn-outline-danger">View detail</a>
+                            <a href="{{ route('course', $course) }}" class="btn btn-danger">View detail</a>
                         </div>
                     </div>
                 </div>

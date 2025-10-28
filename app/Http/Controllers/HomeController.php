@@ -15,9 +15,15 @@ class HomeController extends Controller
         $cookieData = Cookie::get('recent_lessons');
         // var_dump($cookieData);
         $recentLessonsIds = $cookieData ? json_decode($cookieData, true) : [];
-        $recent_lessons = Lesson::whereIn('id', $recentLessonsIds)
-            ->orderByRaw('FIELD(id, ' . implode(',', $recentLessonsIds) . ')')
-            ->get();
+
+        $recent_lessons = collect();
+        if (!empty ($recentLessonsIds)) {
+            // Đảm bảo các ID là số nguyên (đặc biệt khi đọc từ Cookie)
+            $recentLessonsIds = array_map('intval', $recentLessonsIds);
+            $recent_lessons = Lesson::whereIn('id', $recentLessonsIds)
+                ->orderByRaw('FIELD(id, ' . implode(',', $recentLessonsIds) . ')')
+                ->get();
+        }
 
         $courses = Course::orderBy('order')->get();
         return view('home', compact('recent_lessons', 'courses'));

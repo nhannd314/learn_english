@@ -3,7 +3,7 @@
     <div class="row">
 
         @forelse($sounds as $sound)
-            <div class="col-md-3 col-sm-6">
+            <div class="col-6 col-md-3">
                 <a class="sound-item text-center d-block border p-2 mb-3 rounded-2" href="javascript:void(0)" onclick="new Audio('{{ asset('storage/' . $sound->file) }}').play()">
                     <img src="{{ asset('storage/' . $sound->img) }}" alt="{{ $sound->title }}" />
                     <h4 class="text-center">{{ $sound->title }}</h4>

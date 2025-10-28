@@ -40,7 +40,7 @@ class CourseForm
                             $extension = $file->getClientOriginalExtension();
 
                             // Trả về tên file: slug + extension
-                            return $slug . now()->timestamp . '.' . $extension;
+                            return $slug . '-' . now()->timestamp . '.' . $extension;
                         }
                     ),
                 TextInput::make('order')

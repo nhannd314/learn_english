@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
@@ -27,5 +28,23 @@ class HomeController extends Controller
 
         $courses = Course::orderBy('order')->get();
         return view('home', compact('recent_lessons', 'courses'));
+    }
+
+    public function search()
+    {
+        $keyword = request('keyword');
+        $courses = collect();
+        $units = collect();
+        $lessons = collect();
+        $searchTerm = '%' . $keyword . '%';
+
+        // truy van courses
+        $courses = Course::where('title', 'like', $searchTerm)->get();
+        $units   = Unit::where('title', 'like', $searchTerm)->get();
+        $lessons = Lesson::where('title', 'like', $searchTerm)
+            ->orWhere('content', 'like', $searchTerm)
+            ->get();
+
+        return view('search', compact('courses', 'units', 'lessons'));
     }
 }

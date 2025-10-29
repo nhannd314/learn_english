@@ -13,8 +13,8 @@
                     <a class="nav-link" href="/contact-me">Contact me</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <form class="d-flex" role="search" method="GET" action="/search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" />
                 <button class="search-btn" type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
         </div>

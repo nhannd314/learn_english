@@ -1,14 +1,15 @@
 @extends('layouts.main')
 
-@section('body-class', 'home')
+@section('body-class', 'search')
 
 @section('content')
     <div class="container">
+        <h1 class="mb-4">Search results for {{ request('keyword') }}</h1>
         <!-- recent lessons -->
-        <div class="mb-2">
-            <h2 class="mb-4">Recent Lessons</h2>
+        <div class="mb-5">
+            <h2 class="mb-4">Lessons List</h2>
             <div class="row">
-                @forelse($recent_lessons as $lesson)
+                @forelse($lessons as $lesson)
                     <div class="col-md-4 col-sm-12">
                         <div class="lesson text-center bg-success p-4 rounded-2 mb-4">
                             <a class="text-white fs-5" href="{{ route('lesson', $lesson) }}">
@@ -23,7 +24,7 @@
         </div>
 
         <!-- courses list -->
-        <div class="mb-2">
+        <div class="mb-5">
             <h2 class="mb-4">Courses List</h2>
             <div class="row">
                 @forelse($courses as $course)

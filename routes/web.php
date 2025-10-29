@@ -9,6 +9,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 Route::get('/course/{course:slug}', [\App\Http\Controllers\CourseController::class, 'show'])->name('course');
 Route::get('/unit/{unit}', [\App\Http\Controllers\UnitController::class, 'show'])->name('unit');
 Route::get('/lesson/{lesson}', [\App\Http\Controllers\LessonController::class, 'show'])->name('lesson');
+Route::get('/search', [\App\Http\Controllers\HomeController::class, 'search'])->name('search');
 
 //Route::post('/api/words/{word}/regenerate', function (Word $word, Request $request) {
 //    \App\Jobs\CreateWordFile::dispatch($word);

@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="mb-4">Search results for {{ request('keyword') }}</h1>
         <!-- recent lessons -->
-        <div class="mb-5">
+        <div class="mb-2">
             <h2 class="mb-4">Lessons List</h2>
             <div class="row">
                 @forelse($lessons as $lesson)
@@ -24,7 +24,7 @@
         </div>
 
         <!-- courses list -->
-        <div class="mb-5">
+        <div class="mb-2">
             <h2 class="mb-4">Courses List</h2>
             <div class="row">
                 @forelse($courses as $course)

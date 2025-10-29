@@ -48,7 +48,7 @@
             </div>
         @endif
 
-        <div class="content">
+        <div class="content post-content">
             <h2 class="mb-4">Lesson content</h2>
             {!! \App\Helpers\ShortcodeHelper::parse($lesson->content) !!}
         </div>

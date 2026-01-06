@@ -28,6 +28,17 @@ class CrawlHelper
         return $response->body();
     }
 
+    public static function getIpa(string $html)
+    {
+        $crawler = new Crawler($html);
+        // tìm thẻ chứa ipa
+        $ipaNode = $crawler->filter('.pos-header span.us .ipa')->first();
+        if ($ipaNode->count() > 0) {
+            return '/' . $ipaNode->text() . '/';
+        }
+        return null;
+    }
+
     public static function getFile($html)
     {
         // --- BƯỚC 2: Phân tích HTML và tìm URL audio ---

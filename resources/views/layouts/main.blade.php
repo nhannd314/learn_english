@@ -12,6 +12,8 @@
     @else
 
     @endif
+
+    @yield('head')
 </head>
 <body class="@yield('body-class')">
 
@@ -22,6 +24,8 @@
 </main>
 
 @include('partials.footer')
+
+@stack('scripts')
 
 </body>
 </html>

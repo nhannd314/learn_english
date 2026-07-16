@@ -33,7 +33,8 @@ class LessonObserver
             return;
         }
 
-        $lines = explode("\n", $vocabulary);
+        // Thay explode("\n", $vocabulary) bằng regex để tách dòng bất kể \n hay \r\n
+        $lines = preg_split('/\r\n|\r|\n/', $vocabulary);
         $wordIds = [];
         $order = 1;
 

@@ -10,7 +10,9 @@ class LessonController extends Controller
 {
     public function show(Lesson $lesson, Request $request)
     {
-        $lesson->load('words');
+        $lesson->load(['words' => function ($query) {
+            $query->orderBy('lesson_word.order');
+        }]);
 
         // Lưu vào danh sách bài học đã xem
         $cookieData = $request->cookie('recent_lessons');

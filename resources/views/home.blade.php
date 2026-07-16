@@ -31,7 +31,7 @@
                         <div class="course-item mb-4">
                             <div class="mb-2">
                                 <a href="{{ route('course', $course) }}">
-                                    <img src="{{ asset('storage/' . $course->thumbnail) }}"  alt="{{ $course->title }}"/>
+                                    <img class="w-100 ratio ratio-3x4" src="{{ asset('storage/' . $course->thumbnail) }}"  alt="{{ $course->title }}"/>
                                 </a>
                             </div>
                             <div class="">

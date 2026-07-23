@@ -15,6 +15,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact-me">Contact me</a>
                 </li>
+                @if(auth()->check() && auth()->user()->isAdmin())
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+                @endif
             </ul>
             <form class="d-flex" role="search" method="GET" action="/search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" />
